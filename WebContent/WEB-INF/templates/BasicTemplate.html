@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+	<title><ui:insert name="title">Bookstore Application</ui:insert></title>
+</h:head>
+
+<h:body>
+	<h:outputStylesheet library="css" name="header.css" />
+	<ui:debug hotkey="x"
+		rendered="#{initParam['javax.faces.FACELETS_DEVELOPMENT']}" />
+
+	<div id="header">
+		<ui:include src="/WEB-INF/templates/header.xhtml" />
+	</div>
+
+
+	<div id="content">
+		<ui:insert name="content">
+
+		</ui:insert>
+	</div>
+	<div id="footer">
+		<ui:include src="/WEB-INF/templates/footer.xhtml" />
+	</div>
+
+
+</h:body>
+
+</html>

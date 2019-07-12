@@ -1,0 +1,47 @@
+.poster {
+	background-image: url("#{resource['img:cart.jpg']}");
+}
+
+h1 {
+	text-align: center;
+	margin: 4%;
+	font-weight: 400;
+}
+
+h3 {
+	text-align: center;
+	margin: 2%;
+	font-weight: 400;
+}
+
+h4 {
+	text-align: center;
+	margin: 2% 0 5% 0;
+	color: #696969;
+	font-weight: 400;
+}
+
+.middle {
+	width: 50%;
+	margin: 0 auto;
+	margin-top: 1%;
+	border: 0.8px solid #696969;;
+	text-align: center;
+	padding: 2.5% 0 4.5% 0;
+}
+
+.back {
+	border: none;
+	border-radius: 2px;
+	padding: 1.5%;
+	font-size: 1rem;
+	text-decoration: none;
+	background: rgba(60, 35, 17, 0.8);
+	color: white;
+}
+
+.back:hover {
+	transition: 0.5s;
+	background: rgba(141, 95, 82, 1);
+	color: white;
+}

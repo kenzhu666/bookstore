@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:body>
+	<div class="poster">
+		<ul class="header">
+			<li class="icon"><a class="home" href="index.xhtml">BOOKSTORE</a></li>
+			<li>
+				<ul class="inner">
+					<li><a class="home" href="index.xhtml">HOME</a></li>
+					<li><a class="home" href="#about">ABOUT US</a></li>
+					<li>
+						<div class="dropdown">
+							<span>CATEGORY</span>
+							<div class="dropdown-content">
+								<ui:repeat var="category" value="#{bookList.allCategories}">
+									<p>#{category}</p>
+								</ui:repeat>
+							</div>
+						</div>
+					</li>
+					<li><a class="home" href="top.xhtml">TOP 5 SELLERS</a></li>
+				</ul>
+			</li>
+			<li class="login-li"><h:form rendered="#{! login.loggedIn}">
+					<h:commandButton action="#{login.gotoLogin}" value="Login/Signup"
+						styleClass="login" />
+				</h:form> <h:form rendered="#{login.loggedIn}">
+					Hello, #{user.fullName}!
+					<h:commandButton value="Log out" styleClass="logout"
+						action="#{login.logout()}" />
+					<h:commandButton value="View Report" styleClass="login2"
+						action="#{report.gotoReport}" rendered="#{user.type eq 'ADMIN'}"/>
+				</h:form></li>
+
+			<li class="cart-li"><h:button styleClass="cart" value="Cart"
+					outcome="cart" /></li>
+		</ul>
+	</div>
+</h:body>
+</html>

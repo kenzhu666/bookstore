@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:metadata>
+	<f:viewAction action="#{login.redirectToLogin()}" />
+	<f:viewAction action="#{cart.redirectToCart()}" />
+	<f:viewAction action="#{payment.autoScroll}" />
+</f:metadata>
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.html">
+	<ui:define name="title">Payment</ui:define>
+	<ui:define name="content">
+		<h:outputStylesheet library="css" name="payment.css" />
+		<p:growl life="3000" showDetail="true" showSummary="false">
+			<p:autoUpdate />
+		</p:growl>
+		<div class='everything' id="everything">
+			<h:form>
+				<p:wizard>
+					<p:tab title="Shipping Address">
+						<p:panel header="Shipping Address">
+							<h:panelGrid columns="2" styleClass="shipping" cellpadding="10">
+                            Name:<p:inputText required="true"
+									requiredMessage="Please specify name of shipping address"
+									validatorMessage="Please specify a legal name"
+									style="text-transform: capitalize" value="#{payment.shipName}">
+									<f:validateRegex pattern="[a-zA-Z]+([ ][a-zA-Z]+)?" />
+								</p:inputText>
+                            TEL:<p:inputMask mask="999-999-9999"
+									value="#{payment.shipTEL}"
+									validatorMessage="Please specify phone number of shipping address">
+									<f:validateRegex pattern="\d{3}-\d{3}-\d{4}" />
+								</p:inputMask>
+                            Province: 
+                            <p:selectOneMenu
+									value="#{payment.shipAddress.province}">
+									<f:selectItems value="#{signup.allProvince}" var="prov"
+										itemLabel="#{prov.fullName}" itemValue="#{prov.province}" />
+								</p:selectOneMenu>
+                            City: <p:inputText required="true"
+									requiredMessage="Please specify city of shipping address"
+									style="text-transform: capitalize"
+									value="#{payment.shipAddress.city}" />
+                            Address:<p:inputText required="true"
+									requiredMessage="Please specify shipping address"
+									style="text-transform: capitalize"
+									value="#{payment.shipAddress.street}" />
+                            ZIP:<p:inputMask mask="a9a 9a9"
+									style="text-transform: uppercase"
+									validatorMessage="Please specify ZIP code of shipping address"
+									value="#{payment.shipAddress.zip}">
+									<f:validateRegex pattern="[a-zA-Z]\d[a-zA-Z]( )?\d[a-zA-Z]\d" />
+								</p:inputMask>
+							</h:panelGrid>
+						</p:panel>
+						<p:commandButton action="cart?faces-redirect=true" value="Cancel"
+							icon="fa fa-fw fa-angle-double-left"
+							styleClass="b1 leftButton buttons" />
+					</p:tab>
+
+
+					<p:tab title="Billing Address">
+						<p:panel header="Billing Address">
+							<h:panelGrid columns="2" styleClass="billing" cellpadding="10">
+                            Name:<p:inputText required="true"
+									requiredMessage="Please specify name of billing address"
+									validatorMessage="Please specify a legal name"
+									style="text-transform: capitalize" value="#{payment.billName}">
+									<f:validateRegex pattern="[a-zA-Z]+([ ][a-zA-Z]+)?" />
+								</p:inputText>
+                            TEL:<p:inputMask mask="999-999-9999"
+									value="#{payment.billTEL}"
+									validatorMessage="Please specify phone number of billing address">
+									<f:validateRegex pattern="\d{3}-\d{3}-\d{4}" />
+								</p:inputMask>
+                            Province: 
+                            <p:selectOneMenu
+									value="#{payment.billAddress.province}">
+									<f:selectItems value="#{signup.allProvince}" var="prov"
+										itemLabel="#{prov.fullName}" itemValue="#{prov.province}" />
+								</p:selectOneMenu>
+                            City: <p:inputText required="true"
+									requiredMessage="Please specify city of billing address"
+									style="text-transform: capitalize"
+									value="#{payment.billAddress.city}" />
+                            Address:<p:inputText required="true"
+									requiredMessage="Please specify billing address"
+									style="text-transform: capitalize"
+									value="#{payment.billAddress.street}" />
+                            ZIP:<p:inputMask mask="a9a 9a9"
+									style="text-transform: uppercase"
+									validatorMessage="Please specify ZIP code of billing address"
+									value="#{payment.billAddress.zip}">
+									<f:validateRegex pattern="[a-zA-Z]\d[a-zA-Z]( )?\d[a-zA-Z]\d" />
+								</p:inputMask>
+							</h:panelGrid>
+						</p:panel>
+					</p:tab>
+
+
+					<p:tab title="Payment">
+						<p:panel header="Payment">
+							<h:panelGrid columns="2" cellpadding="10">
+							Card Number:<p:inputNumber value="#{payment.creditCard}"
+									maxlength="19" thousandSeparator="" decimalPlaces="0"
+									required="true" requiredMessage="Please enter your credit card" />
+							Expire Date:<p:calendar pattern="MM/dd" mask="true"
+									required="true" requiredMessage="Please choose the expire date"
+									converterMessage="Please specify a valid date" />
+							CVV: <p:inputMask mask="999" required="true"
+									requiredMessage="Please enter CVV" />
+							</h:panelGrid>
+						</p:panel>
+					</p:tab>
+
+
+					<p:tab title="Confirmation">
+						<h:panelGrid columns="1" cellpadding="10">
+							<p:panel header="Shipping Address">
+								<h:panelGrid columns="2" styleClass="no-border">
+                            Name:<h:outputText
+										value="#{payment.shipName}" />
+                            TEL:<h:outputText value="#{payment.shipTEL}" />
+                            Province: <h:outputText
+										value="#{payment.shipAddress.province}" />
+                            City: <h:outputText
+										value="#{payment.shipAddress.city}" />
+                            Address:<h:outputText
+										value="#{payment.shipAddress.street}" />
+                            ZIP:<h:outputText
+										value="#{payment.shipAddress.zip}" />
+								</h:panelGrid>
+							</p:panel>
+							<p:panel header="Billing Address">
+								<h:panelGrid columns="2" styleClass="no-border">
+                            Name:<h:outputText
+										value="#{payment.billName}" />
+                            TEL:<h:outputText value="#{payment.billTEL}" />
+                            Province: <h:outputText
+										value="#{payment.billAddress.province}" />
+                            City: <h:outputText
+										value="#{payment.billAddress.city}" />
+                            Address:<h:outputText
+										value="#{payment.billAddress.street}" />
+                            ZIP:<h:outputText
+										value="#{payment.billAddress.zip}" />
+								</h:panelGrid>
+							</p:panel>
+							<p:panel header="Payment">
+								<h:panelGrid columns="2" styleClass="no-border">
+							Card Number:<h:outputText value="#{payment.creditCard}" />
+								</h:panelGrid>
+							</p:panel>
+							<p:panel header="Confirmation">
+								<h:panelGrid columns="2" styleClass="no-border">
+                        Cart Total: <h:outputText
+										value="#{cart.totalPrice}">
+										<f:convertNumber type="currency" currencySymbol="$" />
+									</h:outputText>
+                        Shipping: <h:outputText
+										value="#{cart.shippingFee}">
+										<f:convertNumber type="currency" currencySymbol="$" />
+									</h:outputText>
+                        Tax: <h:outputText value="#{cart.tax}">
+										<f:convertNumber type="currency" currencySymbol="$" />
+									</h:outputText>
+                        Total: <h:outputText
+										value="#{cart.totalAfterTax}">
+										<f:convertNumber type="currency" currencySymbol="$" />
+									</h:outputText>
+								</h:panelGrid>
+							</p:panel>
+
+						</h:panelGrid>
+
+
+						<div class="buttons">
+							<p:commandButton action="cart?faces-redirect=true" value="Cancel"
+								icon="fa fa-fw fa-angle-double-left" styleClass="b1" />
+							<p:commandButton action="#{payment.checkout}" value="Confirm"
+								icon="fa fa-fw fa-check" styleClass="b2" />
+						</div>
+					</p:tab>
+				</p:wizard>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

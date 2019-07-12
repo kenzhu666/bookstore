@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.html">
+	<ui:define name="title">Top Sellers</ui:define>
+	<ui:define name="content">
+		<h:outputStylesheet library="css" name="report.css" />
+		<h:outputStylesheet library="css" name="top.css" />
+		<div class="all">
+			<p:panel header="Top 5 Sellers">
+				<p:dataTable value="#{top}" var="entry">
+					<p:column headerText="Title">#{entry.title}</p:column>
+					<p:column headerText="Quantity">#{entry.quantity}</p:column>
+				</p:dataTable>
+			</p:panel>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

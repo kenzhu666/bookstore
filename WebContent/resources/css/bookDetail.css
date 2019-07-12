@@ -1,0 +1,214 @@
+/*fonts*/
+h1 {
+	font-size: 1.3rem;
+	font-weight: 600;
+}
+
+h2 {
+	font-size: 1.2rem;
+	font-weight: 500;
+}
+
+h3 {
+	font-size: 1rem;
+	font-weight: 200;
+}
+
+h4 {
+	font-size: 0.8rem;
+	font-weight: 200;
+}
+
+p {
+	font-size: 0.8rem;
+}
+
+hr {
+	border-top: 0.8px solid #A9A9A9;
+}
+
+/*header*/
+.poster {
+	background-image: url("#{resource['img:singlebook.jpg']}");
+}
+
+/*content*/
+body .all {
+	width: 60%;
+	margin: auto;
+	margin-top: 3%;
+}
+
+body .upper {
+	width: 100%;
+	height: 0;
+	padding-bottom: 65%;
+}
+
+body .pic {
+	position: relative;
+	width: 42.6%;
+	float: left;
+	height: 0;
+	padding-bottom: 62.5%;
+}
+
+body .pic img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+body .info {
+	width: 50%;
+	float: right;
+	height: 0;
+	padding-bottom: 60%;
+}
+
+body .description {
+	width: 100%;
+	margin-bottom: 5%;
+}
+
+/*price*/
+body .price {
+	width: 100%;
+	height: 0;
+	padding-bottom: 15%;
+}
+
+body .buyForm td {
+	padding-left: 0;
+	padding-right: 20px;
+	text-align: left;
+}
+
+body .rating {
+	margin: 5% 0 5% 0;
+}
+
+/*customer review*/
+body .checked {
+	color: orange;
+}
+
+/*button*/
+#buttons {
+	margin-top: 10%;
+	width: 100%;
+}
+
+body .review {
+	border: none;
+	width: 30%;
+	color: black;
+	margin-top: 5%;
+	float: left;
+	height: 30px;
+	border-radius: 2px;
+	background-color: #D7D7D7;
+}
+
+body .review:hover {
+	transition: 0.5s;
+	padding: 0.2%;
+	cursor: pointer;
+	background: rgba(141, 95, 82, 0.8);
+	color: white;
+}
+
+body .add {
+	margin-top: 3%;
+	color: black;
+	border: none;
+	width: 40%;
+	float: left;
+	height: 30px;
+	border-radius: 2px;
+	background-color: #D7D7D7;
+}
+
+body .add:hover {
+	transition: 0.5s;
+	padding: 0.2%;
+	cursor: pointer;
+	background: rgba(141, 95, 82, 0.8);
+	color: white;
+}
+
+/*My review*/
+body .unchecked {
+	color: #A9A9A9;
+}
+
+body .my-review {
+	margin-top: 5%;
+}
+
+body .review-title {
+	margin-top: 4%;
+}
+
+body .review-input {
+	width: 40%;
+	height: 20px;
+	border: 1px solid #A9A9A9;
+}
+
+textarea {
+	border: 1px solid #A9A9A9;
+	resize: none;
+}
+
+/*Comments*/
+body .comments {
+	margin-top: 15%;
+}
+
+body .comments hr {
+	margin-bottom: 5%;
+}
+
+body .comments .title {
+	position: relative;
+	width: 100%;
+	background-color: #DCDCDC;
+	padding: 0.01% 0 0.01% 1%;
+	color: black;
+}
+
+body .each-comment {
+	position: relative;
+	width: 95%;
+}
+
+body .each-comment h3 {
+	margin-top: 5%;
+	font-weight: 600;
+}
+
+body .each-comment button {
+	margin-top: 3%;
+	padding: 1%;
+	border: none;
+	float: right;
+	background-color: #DCDCDC;
+	color: black;
+}
+
+body .each-comment button:hover {
+	transition: 0.5s;
+	padding: 1%;
+	cursor: pointer;
+	background: rgba(141, 95, 82, 0.8);
+	color: white;
+}
+
+body .each-comment hr {
+	margin: 10% 0 5% 0;
+}
+
+body .comment-content {
+	margin-top: 2%;
+}

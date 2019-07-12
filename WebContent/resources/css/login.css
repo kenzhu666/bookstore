@@ -1,0 +1,79 @@
+h3 {
+	font-weight: 400;
+}
+
+u {
+	font-weight: 100;
+	font-size: 0.8rem;
+	margin: -5% 0 0 50%;
+	cursor: pointer;
+}
+
+/*menu*/
+.home {
+	color: white;
+}
+
+
+
+.poster {
+	background-image: url("#{resource['img:singlebook.jpg']}");
+	padding-bottom: 7%;
+}
+
+
+/*content*/
+.all {
+	width: 35%;
+	margin: auto;
+	margin-top: 10%;
+	border: 0.8px solid #A9A9A9;
+}
+
+.content {
+	text-align: center;
+}
+
+.login-title {
+	margin: 0 0 10% 0;
+	padding: 2%;
+	background: rgb(156, 147, 144);
+	color: white;
+}
+
+label {
+	padding-bottom: 10%;
+}
+
+.first {
+	margin-top: 10%;
+}
+
+.content input {
+	width: 80%;
+	height: 25px;
+	margin: 1% 0 1% 0;
+}
+
+.content .b {
+	background: rgb(156, 147, 144);
+	color: white;
+	margin: 10% 0 10% 0;
+	width: 20%;
+	height: 30px;
+	padding: 1%;
+	border: none;
+	border-radius: 2px;
+}
+
+.b:hover {
+	transition: 0.5s;
+	padding: 1.5%;
+	background: rgba(60, 35, 17, 1);
+	color: white;
+}
+
+.hint {
+	color: black;
+}
+

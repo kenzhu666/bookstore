@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.html">
+	<ui:define name="title">Bookstore</ui:define>
+
+	<ui:define name="content">
+		<h:outputStylesheet library="css" name="index.css" />
+		<p:growl showDetail="true" life="3000">
+			<p:autoUpdate />
+		</p:growl>
+		<h:form styleClass="search" id="search">
+			<p:inputText id="searchbox" value="#{bookList.searchTitle}"
+				styleClass="search-input" placeholder="Search.." />
+			<p:commandButton value="Search" action="#{bookList.searchBooks}"
+				styleClass="searchButton" update="books" />
+		</h:form>
+
+		<div class="all">
+			<h:form id="books">
+				<ui:repeat var="category" value="#{bookList.categories}">
+					<h3 class="cate-title">#{category}</h3>
+					<ul class="wrapper">
+						<ui:repeat var="book"
+							value="#{bookList.getBooksByCategory(category)}">
+							<h:commandLink action="#{bookDetail.loadBook(book)}">
+								<li class="each">
+									<div class='book-pic'>
+										<img src="#{book.img}" alt="" />
+									</div>
+									<div class='book-info'>
+										<h5>#{book.title}</h5>
+										<h5>
+											<h:outputText value="#{book.price}">
+												<f:convertNumber type="currency" currencySymbol="$" />
+											</h:outputText>
+										</h5>
+										<h5>
+											<h:outputText escape="false"
+												value="#{review.getRateStar(book.bid)}" />
+										</h5>
+									</div>
+								</li>
+							</h:commandLink>
+						</ui:repeat>
+					</ul>
+				</ui:repeat>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

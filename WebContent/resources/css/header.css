@@ -1,0 +1,212 @@
+.home {
+	color: white;
+}
+
+.poster {
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	margin: -1.5% -0.5% 0 -0.6%;
+	height: 0;
+	padding-bottom: 15%;
+}
+
+.header {
+	padding-top: 3%;
+	width: 90%;
+	margin: auto;
+	color: white;
+	list-style-type: none;
+	cursor: pointer;
+}
+
+.icon {
+	float: left;
+	width: 30px;
+	height: 30px;
+}
+
+.inner {
+	position: relative;
+	list-style-type: none;
+	width: 70%;
+	text-align: center;
+	margin-left: 15%;
+}
+
+.inner li {
+	display: inline;
+	float: left;
+	width: 15%;
+	margin-left: 4%;
+	font-size: 0.9rem;
+}
+
+.inner li:hover {
+	transition: 0.5s;
+	background-color: white;
+	padding: 1%;
+	color: black;
+	border-radius: 3px;
+}
+
+.inner li:hover a {
+	color: black;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	visibility: hidden;
+	opacity: 0;
+	z-index: 1;
+	font-size: 0.8rem;
+	text-align: center;
+	padding: 1% 0 1% 0;
+	background-color: white;
+	color: black;
+	border-radius: 2px;
+}
+
+.dropdown:hover .dropdown-content {
+	visibility: visible;
+	opacity: 1;
+}
+
+.dropdown-content p:hover {
+	background: rgba(60, 35, 17, 1);
+	padding: 1%;
+	color: white;
+}
+
+.login-li {
+	width: 12%;
+	float: right;
+}
+
+.cart-li {
+	width: 10%;
+	float: right;
+}
+
+.login {
+	border: none;
+	border-radius: 3px;
+	font-size: 1rem;
+	padding: 5%;
+	text-decoration: none;
+	background: rgba(60, 35, 17, 0.5);
+	color: white;
+}
+
+.login:hover {
+	transition: 0.5s;
+	background: rgba(141, 95, 82, 1);
+	color: white;
+	padding: 6%;
+}
+
+.login2 {
+	margin-top: 7%;
+	border: none;
+	border-radius: 3px;
+	font-size: 1rem;
+	padding: 5%;
+	text-decoration: none;
+	background: rgba(141, 95, 82, 1);
+	color: white;
+}
+
+.login2:hover {
+	transition: 0.5s;
+	background: rgba(60, 35, 17, 0.5);
+	color: white;
+	padding: 6%;
+}
+
+.logout {
+	border: none;
+	border-radius: 3px;
+	font-size: 1rem;
+	padding: 5%;
+	text-decoration: none;
+	background: rgba(255, 255, 255, 0.5);
+	color: black;
+	margin-top: 7%;
+}
+
+.logout:hover {
+	transition: 0.5s;
+	background: rgba(255, 255, 255, 1);
+	color: black;
+}
+
+.cart {
+	border: none;
+	border-radius: 3px;
+	font-size: 1rem;
+	padding: 5%;
+	text-decoration: none;
+	background: rgba(255, 255, 255, 0.5);
+	color: black;
+}
+
+.cart:hover {
+	transition: 0.5s;
+	background: rgba(255, 255, 255, 1);
+	color: black;
+	padding: 6%;
+}
+
+.about-us {
+	margin-top: 7.5%;
+	width: 100%;
+	bottom: 0;
+	height: 150px;
+	background-color: grey;
+}
+
+.about-us-content {
+	width: 60%;
+	margin: 0 auto;
+}
+
+.left-footer {
+	margin-top: 3%;
+	position: relative;
+	padding: 2%;
+	float: left;
+	color: white;
+}
+
+.right-footer {
+	margin-top: 3%;
+	position: relative;
+	padding: 2%;
+	color: white;
+	width: 50%;
+	float: right;
+}
+
+.about-us p {
+	font-size: 0.8rem;
+}
+
+.about-us p a {
+	color: antiquewhite;
+}
+
+body .ui-rating .ui-rating-star-on a {
+	color: orange;
+}
+
+body .ui-rating .ui-rating-star a {
+	color: orange;
+}
+
+body .ui-rating .ui-rating-star a:hover {
+	color: darkorange;
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:metadata>
+	<f:viewAction action="#{bookDetail.validCall()}" />
+</f:metadata>
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.html">
+	<ui:define name="title"></ui:define>
+	<ui:define name="content">
+		<h:outputStylesheet library="css" name="bookDetail.css" />
+		<p:growl showDetail="true" life="4000">
+			<p:autoUpdate />
+		</p:growl>
+		<div class="all" id="all">
+			<div class="upper">
+				<div class="pic">
+					<img src="#{bookDetail.book.img}" alt="" />
+				</div>
+				<div class="info">
+					<h1>#{bookDetail.book.title}</h1>
+					<p>Author: #{bookDetail.book.author}</p>
+					<p>
+						Release:
+						<h:outputText value="#{bookDetail.book.release}">
+							<f:convertDateTime type="date" dateType="short" />
+						</h:outputText>
+					</p>
+					<hr />
+
+					<div class="description">
+						<p>#{bookDetail.book.description}</p>
+					</div>
+
+					<h:panelGroup layout="block" styleClass="rating" id="rating">
+						<h4 id="title">
+							Customer rating:
+							<h:outputText value="#{bookDetail.avgRate}">
+								<f:convertNumber pattern="0.0" />
+							</h:outputText>
+							/ 5.0
+						</h4>
+						<h:outputText value="#{bookDetail.rateStar}" escape="false" />
+					</h:panelGroup>
+
+					<div class="price">
+						<h:form id="buyForm">
+							<h:panelGrid columns="2" cellpadding="10" styleClass="buyForm">
+							Quantity:
+							<p:spinner min="1" max="10" maxlength="2" required="true"
+									requiredMessage="Please specify the quantity!"
+									validatorMessage="Quantity should between 1 and 10"
+									value="#{pOItem.quantity}" size="1">
+									<f:validateLongRange minimum="1" maximum="10" />
+								</p:spinner>
+							Price:
+							<h:outputText value="#{bookDetail.book.price}">
+									<f:convertNumber type="currency" currencySymbol="$" />
+								</h:outputText>
+							</h:panelGrid>
+
+							<div id="buttons">
+								<p:commandButton update="@form" value="Add To Cart"
+									styleClass="add"
+									action="#{cart.add(bookDetail.book, pOItem.quantity)}" />
+							</div>
+						</h:form>
+					</div>
+				</div>
+			</div>
+
+			<h:form rendered="#{login.loggedIn}" id="reviewForm">
+				<div class='my-review'>
+					<h2>Overall Rating*</h2>
+					<p:rating value="#{review.rate}" required="true" cancel="false"
+						requiredMessage="Please choose the star!" />
+
+					<h3 class='review-title'>Write Your Review*</h3>
+					<p:inputTextarea id="reviewInput" rows="6" cols="100"
+						value="#{review.description}" required="true"
+						requiredMessage="Comment cannot be empty!"
+						placeholder="Write your review here..." />
+
+					<p:commandButton value="Write a review" id="add"
+						update="@form comments rating"
+						action="#{bookDetail.addReview(review)}" styleClass="review">
+						<f:setPropertyActionListener value="#{user.id}"
+							target="#{review.uid}" />
+						<f:setPropertyActionListener value="#{bookDetail.bid}"
+							target="#{review.bid}" />
+					</p:commandButton>
+				</div>
+			</h:form>
+
+			<h:form rendered="#{! login.loggedIn}">
+				<h:commandLink styleClass="u"
+					value="Want to write a review? Click to Login in"
+					action="#{login.gotoLogin}" />
+			</h:form>
+
+			<h:panelGroup layout="block" id="comments">
+				<div class="comments">
+					<hr />
+					<div class="title">
+						<h2>All Reviews</h2>
+					</div>
+					<h:outputText rendered="#{bookDetail.reviews.isEmpty()}"
+						value="No one leaves a comment." />
+					<ui:repeat var="review" value="#{bookDetail.reviews}">
+						<div class='each-comment'>
+							<h3>
+								#{bookDetail.getUserByID(review.uid).fullName} -- at
+								<h:outputText value="#{review.date}">
+									<f:convertDateTime type="date" dateType="short" />
+								</h:outputText>
+							</h3>
+							<p:rating value="#{review.rate}" readonly="true" />
+							<div class='comment-content'>#{review.description}</div>
+							<hr />
+						</div>
+					</ui:repeat>
+				</div>
+			</h:panelGroup>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

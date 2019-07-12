@@ -1,0 +1,16 @@
+.poster {
+	background-image: url("#{resource['img:singlebook.jpg']}");
+}
+
+.all {
+	width: 40%;
+	margin: auto;
+}
+
+body .ui-panel {
+	margin: 5%;
+}
+
+body .ui-panel-titlebar {
+	text-align: center;
+}

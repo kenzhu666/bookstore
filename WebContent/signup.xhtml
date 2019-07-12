@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.html">
+	<ui:define name="title">Sign Up</ui:define>
+	<ui:define name="content">
+		<h:outputStylesheet library="css" name="signup.css" />
+		<p:growl showDetail="true" showSummary="false" life="6000">
+			<p:autoUpdate />
+		</p:growl>
+		<div class="all">
+			<div class="content">
+				<h:form id="form">
+					<h2 class="signup-title">Registration</h2>
+					<h3 class="sub-title">Account Setting:</h3>
+					<p:focus context="@form" />
+					<h:panelGrid columns="3" styleClass="table">
+	    		Username: <p:inputText id="username" label="Username"
+							title="Enter your username with length 3 - 20"
+							value="#{signup.username}" validator="#{signup.validateUsername}"
+							maxlength="20" />
+						<p:tooltip for="@previous" showEvent="focus" hideEvent="blur" />
+	   	 		Password: <p:password id="password" label="Password"
+							match="reenter" title="Enter your password at least 4 characters"
+							value="#{signup.password}" required="true" maxlength="16"
+							promptLabel="Please enter a password at least 4 characters">
+							<f:validateLength minimum="4" />
+						</p:password>
+						<p:tooltip for="@previous" showEvent="focus" hideEvent="blur" />
+				Re-enter password: <p:password id="reenter"
+							label="Re-enter Password" title="Re-enter your password"
+							value="#{signup.password}" maxlength="16" />
+						<p:tooltip for="@previous" showEvent="focus" hideEvent="blur" />
+					</h:panelGrid>
+					<br />
+					<hr class='hr' />
+					<br />
+					<h3 class='sub-title'>Profile:</h3>
+					<h:panelGrid columns="2" styleClass="table">
+	    		First Name: <p:inputText id="firstName" label="First Name"
+							value="#{signup.fname}" placeholder="John"
+							validatorMessage="Please enter your first name"
+							style="text-transform: capitalize">
+							<f:validateRegex pattern="[a-zA-Z]+" />
+						</p:inputText>
+	    		Last Name: <p:inputText id="lastName" label="Last Name"
+							value="#{signup.lname}" placeholder="White"
+							validatorMessage="Please enter your last name"
+							style="text-transform: capitalize">
+							<f:validateRegex pattern="[a-zA-Z]+" />
+						</p:inputText>
+		    	TEL: <p:inputMask mask="999-999-9999" value="#{signup.tel}"
+							autoClear="false"
+							validatorMessage="Please enter your phone number"
+							placeholder="416-123-4567">
+							<f:validateRegex pattern="\d{3}-\d{3}-\d{4}" />
+						</p:inputMask>
+		    	Province: <p:selectOneMenu id="province"
+							value="#{signup.province}" required="true">
+							<f:selectItems value="#{signup.allProvince}" var="prov"
+								itemLabel="#{prov.fullName}" itemValue="#{prov.province}" />
+						</p:selectOneMenu>
+				City: <p:inputText id="city" label="City" value="#{signup.city}"
+							required="true" requiredMessage="Please enter your city"
+							style="text-transform: capitalize" placeholder="Toronto" />
+				Address: <p:inputText id="address" label="Address"
+							value="#{signup.address}" required="true"
+							requiredMessage="Please enter your address"
+							style="text-transform: capitalize" />
+		    	ZIP: <p:inputMask mask="a9a 9a9" value="#{signup.zip}"
+							autoClear="false" style="text-transform: uppercase"
+							placeholder="M1M 1N1"
+							validatorMessage="Please enter your ZIP code">
+							<f:validateRegex pattern="[a-zA-Z]\d[a-zA-Z]( )?\d[a-zA-Z]\d" />
+						</p:inputMask>
+					</h:panelGrid>
+					<p:commandButton value="Sign Up" update="form" styleClass="b"
+						action="#{signup.signup}" />
+
+				</h:form>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

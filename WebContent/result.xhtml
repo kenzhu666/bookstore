@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.html">
+	<ui:define name="title">Result</ui:define>
+	<ui:define name="content">
+		<h:outputStylesheet library="css" name="result.css" />
+		<div class="middle">
+			<h1>
+				<h:outputText value="THANK YOU" rendered="#{transaction}" />
+				<h:outputText value="SORRY" rendered="#{! transaction}" />
+			</h1>
+			<h3>
+				<h:outputText value="Your Order Successfully Completed"
+					rendered="#{transaction}" />
+				<h:outputText value="Credit Card Authorization Failed"
+					rendered="#{!transaction}" />
+			</h3>
+			<h4>Your order is the No.#{orderID} order</h4>
+			<h:button styleClass="back" outcome="index" value="Back to Mainpage" />
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
